@@ -90,7 +90,7 @@ module DataObjects
       string << ":#{port}"       if port
       string << path.to_s
       if query
-        string << "?" << query.map do |key, value|
+        string << "?" << query.select {|k,v| k!='password' }.map do |key, value|
           "#{key}=#{value}"
         end.join("&")
       end
